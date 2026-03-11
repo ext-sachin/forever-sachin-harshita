@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Countdown from "./components/Countdown";
 import Map from "./components/Map";
-import Music from "./components/Music";
 
 /* Animation components */
 
@@ -107,9 +106,6 @@ function App() {
           {/* Floating animations */}
           <FloatingHearts />
           <Petals />
-
-          {/* Music */}
-          <Music />
 
           {/* Navigation */}
           <Navbar />

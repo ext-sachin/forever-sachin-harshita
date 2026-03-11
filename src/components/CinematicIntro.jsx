@@ -17,6 +17,54 @@ export default function CinematicIntro({ setOpen }) {
     <div className="cinema-container">
       <PetalRain className="rose-petal-rain--front" count={22} />
 
+      <div className="corner-ornament corner-ornament-left" aria-hidden="true">
+        <span className="corner-ring"></span>
+        <span className="corner-ring-inner"></span>
+        <span className="corner-flower-strand"></span>
+        <span className="corner-drop corner-drop-a"></span>
+        <span className="corner-drop corner-drop-b"></span>
+      </div>
+
+      <div className="corner-ornament corner-ornament-right" aria-hidden="true">
+        <span className="corner-ring"></span>
+        <span className="corner-ring-inner"></span>
+        <span className="corner-flower-strand"></span>
+        <span className="corner-drop corner-drop-a"></span>
+        <span className="corner-drop corner-drop-b"></span>
+      </div>
+
+      <div
+        className="ornamental-gateway ornamental-gateway-left"
+        aria-hidden="true"
+      >
+        <span className="gateway-crown"></span>
+        <span className="gateway-floral-garland"></span>
+        <span className="gateway-flower-cluster gateway-flower-cluster-left"></span>
+        <span className="gateway-flower-cluster gateway-flower-cluster-right"></span>
+        <span className="gateway-hanging gateway-hanging-left"></span>
+        <span className="gateway-hanging gateway-hanging-right"></span>
+        <span className="gateway-arch"></span>
+        <span className="gateway-pillar gateway-pillar-left"></span>
+        <span className="gateway-pillar gateway-pillar-right"></span>
+        <span className="gateway-base"></span>
+      </div>
+
+      <div
+        className="ornamental-gateway ornamental-gateway-right"
+        aria-hidden="true"
+      >
+        <span className="gateway-crown"></span>
+        <span className="gateway-floral-garland"></span>
+        <span className="gateway-flower-cluster gateway-flower-cluster-left"></span>
+        <span className="gateway-flower-cluster gateway-flower-cluster-right"></span>
+        <span className="gateway-hanging gateway-hanging-left"></span>
+        <span className="gateway-hanging gateway-hanging-right"></span>
+        <span className="gateway-arch"></span>
+        <span className="gateway-pillar gateway-pillar-left"></span>
+        <span className="gateway-pillar gateway-pillar-right"></span>
+        <span className="gateway-base"></span>
+      </div>
+
       <motion.img
         src="/images/groom.png"
         className="groom-img"
