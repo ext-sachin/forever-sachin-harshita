@@ -66,7 +66,7 @@ export default function Countdown() {
       <div className="count-overlay"></div>
 <GoldenRing />
 <Sparkles />
-<PetalRain />
+<PetalRain className="rose-petal-rain--countdown" />
 <div className="count-content"></div>
       <h2 className="count-title">
         Countdown to Our Wedding
