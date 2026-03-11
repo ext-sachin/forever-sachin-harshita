@@ -11,7 +11,7 @@ strength={300}
 
 <div className="hero">
 
-<h1>Sachin & Harshitha</h1>
+<h1>Sachin ❤️ Harshitha</h1>
 
 <p>We're getting married</p>
 

@@ -13,7 +13,7 @@ export default function WeddingDetails() {
         <p className="ceremony-text">
           Together with their families,
           <br />
-          <strong>Sachinkumar.P</strong> & <strong>Harshitha.P</strong>
+          <strong>Sachinkumar.P</strong> ❤️ <strong>Harshitha.P</strong>
           <br />
           invite you to celebrate their wedding.
         </p>
