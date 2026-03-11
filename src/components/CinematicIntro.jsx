@@ -52,7 +52,10 @@ export default function CinematicIntro({ setOpen }) {
 
               <p className="invite-date">April 11-12 2026</p>
 
-              <button className="invite-btn" onClick={() => setOpen(true)}>
+              <button
+                className="invite-btn open-invite-btn"
+                onClick={() => setOpen(true)}
+              >
                 Open Invitation
               </button>
             </div>
