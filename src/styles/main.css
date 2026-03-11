@@ -1940,3 +1940,225 @@ padding:10px 18px;
 font-size:0.9rem;
 }
 }
+
+/* CEREMONY PATH EXPERIENCE */
+
+.ceremony-layout{
+position:relative;
+width:min(1180px,100%);
+margin:0 auto;
+display:grid;
+grid-template-columns:minmax(230px,0.92fr) minmax(360px,1.2fr) minmax(230px,0.92fr);
+grid-template-areas:"left main right";
+gap:20px;
+align-items:center;
+padding:126px 0 12px;
+}
+
+.ceremony-flow-path{
+position:absolute;
+left:4%;
+top:12px;
+width:92%;
+height:122px;
+z-index:1;
+pointer-events:none;
+opacity:0.96;
+}
+
+.ceremony-flow-glow{
+fill:none;
+stroke:rgba(255,77,109,0.36);
+stroke-width:14;
+stroke-linecap:round;
+}
+
+.ceremony-flow-dash{
+fill:none;
+stroke:rgba(255,255,255,0.98);
+stroke-width:4;
+stroke-linecap:round;
+stroke-dasharray:12 10;
+animation:ceremonyRouteMove 14s linear infinite;
+}
+
+.ceremony-flow-dot{
+fill:#ff4d6d;
+stroke:rgba(255,255,255,0.9);
+stroke-width:2;
+filter:drop-shadow(0 0 10px rgba(255,77,109,0.55));
+}
+
+.ceremony-flow-dot-center{
+fill:#3376d8;
+}
+
+@keyframes ceremonyRouteMove{
+from{
+stroke-dashoffset:0;
+}
+to{
+stroke-dashoffset:-240;
+}
+}
+
+.ceremony-side-card-left{
+grid-area:left;
+padding-right:10px;
+}
+
+.ceremony-side-card-right{
+grid-area:right;
+padding-left:10px;
+}
+
+.ceremony-card-main{
+grid-area:main;
+position:relative;
+z-index:2;
+max-width:none;
+width:100%;
+box-sizing:border-box;
+padding:34px 28px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.62);
+background:rgba(255,255,255,0.42);
+backdrop-filter:blur(13px);
+box-shadow:0 22px 52px rgba(0,0,0,0.16);
+}
+
+.ceremony-side-card{
+position:relative;
+z-index:2;
+min-width:0;
+box-sizing:border-box;
+padding:10px 0;
+background:transparent;
+border:none;
+border-radius:0;
+box-shadow:none;
+backdrop-filter:none;
+}
+
+.ceremony-side-title{
+margin:0 0 12px;
+font-size:1rem;
+font-weight:700;
+letter-spacing:0.04em;
+text-transform:uppercase;
+color:#632e40;
+}
+
+.ceremony-points{
+margin:0;
+padding:0;
+list-style:none;
+display:grid;
+gap:10px;
+}
+
+.ceremony-points li{
+display:flex;
+align-items:center;
+gap:8px;
+width:100%;
+box-sizing:border-box;
+line-height:1.42;
+font-size:0.95rem;
+font-weight:500;
+color:#492f39;
+padding:10px 14px;
+border-radius:999px;
+border:1px solid rgba(255,255,255,0.62);
+background:rgba(255,255,255,0.36);
+backdrop-filter:blur(8px);
+box-shadow:0 10px 24px rgba(0,0,0,0.09);
+}
+
+.ceremony-point-icon{
+flex-shrink:0;
+color:#ff4d6d;
+}
+
+.ceremony-text span{
+color:#ff4d6d;
+font-size:1.05em;
+}
+
+.ceremony-actions{
+margin-top:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.ceremony-actions .calendar-btn{
+margin-top:0;
+}
+
+.ceremony-date{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+}
+
+@media (max-width:1100px){
+.ceremony-layout{
+grid-template-columns:1fr;
+grid-template-areas:
+"main"
+"left"
+"right";
+gap:14px;
+padding:0;
+}
+
+.ceremony-flow-path{
+display:none;
+}
+
+.ceremony-card-main{
+padding:30px 22px;
+}
+
+.ceremony-side-card{
+padding:16px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.58);
+background:rgba(255,255,255,0.28);
+backdrop-filter:blur(8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.ceremony-side-card-left,
+.ceremony-side-card-right{
+padding-left:16px;
+padding-right:16px;
+}
+}
+
+@media (max-width:768px){
+.ceremony-title{
+font-size:clamp(1.8rem,7vw,2.2rem);
+}
+
+.ceremony-text{
+font-size:1.03rem;
+}
+
+.ceremony-actions{
+gap:10px;
+}
+
+.ceremony-date,
+.ceremony-actions .calendar-btn{
+width:100%;
+}
+
+.ceremony-points li{
+border-radius:14px;
+}
+}
