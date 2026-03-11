@@ -22,6 +22,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [inviteOpen, setInviteOpen] = useState(false);
+  const [showDeferredSections, setShowDeferredSections] = useState(false);
 
   useEffect(() => {
     let minimumDelayDone = false;
@@ -55,6 +56,37 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    // Preload only above-the-fold images for smoother first paint after opening invite.
+    const criticalImages = ["/images/couple.jpg", "/images/countdown-bg.jpg"];
+    const imageRefs = criticalImages.map((src) => {
+      const image = new Image();
+      image.decoding = "async";
+      image.src = src;
+      return image;
+    });
+
+    return () => {
+      imageRefs.forEach((image) => {
+        image.src = "";
+      });
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!inviteOpen) {
+      setShowDeferredSections(false);
+      return;
+    }
+
+    // Defer heavier, below-the-fold sections to keep the transition smooth.
+    const deferredTimer = window.setTimeout(() => {
+      setShowDeferredSections(true);
+    }, 260);
+
+    return () => window.clearTimeout(deferredTimer);
+  }, [inviteOpen]);
+
   if (isLoading) {
     return <WeddingLoader />;
   }
@@ -87,13 +119,17 @@ function App() {
 
           <Countdown />
 
-          <MomentsSlider />
+          {showDeferredSections && (
+            <>
+              <MomentsSlider />
 
-          <WeddingDetails />
+              <WeddingDetails />
 
-          <Map />
+              <Map />
 
-          <ShareButtons />
+              <ShareButtons />
+            </>
+          )}
         </>
       )}
     </>

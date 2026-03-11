@@ -39,7 +39,13 @@ className="moments-swiper"
 
 {images.map((img,index)=>(
 <SwiperSlide key={index}>
-<img src={img} alt="moment"/>
+<img
+src={img}
+alt="moment"
+loading={index === 0 ? "eager" : "lazy"}
+decoding="async"
+fetchPriority={index === 0 ? "high" : "low"}
+/>
 </SwiperSlide>
 ))}
 
