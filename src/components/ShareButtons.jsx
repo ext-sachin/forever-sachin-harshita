@@ -3,6 +3,9 @@ import { FaInstagram, FaLink, FaWhatsapp } from "react-icons/fa";
 
 export default function ShareButtons() {
   const [statusMessage, setStatusMessage] = useState("");
+  const inviteTitle = "Sachin & Harshitha | Wedding Invitation";
+  const inviteMessage =
+    "You're invited to Sachin & Harshitha's wedding on April 11-12, 2026.";
 
   const shareUrl = useMemo(() => {
     if (typeof window === "undefined") {
@@ -12,9 +15,8 @@ export default function ShareButtons() {
   }, []);
 
   const shareText = useMemo(
-    () =>
-      `You're invited to Sachin & Harshitha's wedding on April 11-12, 2026! ${shareUrl}`,
-    [shareUrl]
+    () => `${inviteMessage}\n\n${shareUrl}`,
+    [inviteMessage, shareUrl]
   );
 
   const copyToClipboard = async (text) => {
@@ -25,18 +27,34 @@ export default function ShareButtons() {
     return false;
   };
 
-  const handleWhatsAppShare = () => {
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+  const handleWhatsAppShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: inviteTitle,
+          text: inviteMessage,
+          url: shareUrl
+        });
+        setStatusMessage("Share sheet opened. Choose WhatsApp.");
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") {
+          return;
+        }
+      }
+    }
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareUrl)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    setStatusMessage("WhatsApp share opened.");
+    setStatusMessage("WhatsApp opened. Wait for the preview, then add your note.");
   };
 
   const handleInstagramShare = async () => {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: "Wedding Invitation",
-          text: "You're invited to our wedding celebration!",
+          title: inviteTitle,
+          text: inviteMessage,
           url: shareUrl
         });
         setStatusMessage("Share sheet opened. Choose Instagram.");
