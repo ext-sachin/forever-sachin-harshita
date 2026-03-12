@@ -15,7 +15,10 @@ export default function Hero() {
             </span>
             <span className="hero-name">Harshitha</span>
           </h1>
-          <p>We're getting married</p>
+          <p>
+            We&apos;re getting married, and with joyful hearts we invite you to
+            celebrate the beginning of our forever.
+          </p>
         </div>
       </div>
     </Parallax>
