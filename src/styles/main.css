@@ -47,6 +47,26 @@ color:#ff2e63;
 font-size:22px;
 }
 
+.nav-initials{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:6px;
+line-height:1;
+}
+
+.nav-heart{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin:0;
+font-size:0.78em;
+line-height:1;
+color:#ff2e63;
+transform:translateY(-1px);
+text-shadow:0 0 10px rgba(255,46,99,0.35);
+}
+
 /* HERO */
 
 .hero{
@@ -63,12 +83,48 @@ padding-top:80px;
 
 .hero h1{
 font-size:2.2rem;
+margin:0;
 /* font-weight:700; */
 }
 
-.hero span{
-color:#ff2e63;
-margin:0 10px;
+.hero-couple-name{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:0.24em;
+line-height:1.08;
+text-align:center;
+flex-wrap:wrap;
+}
+
+.hero-name{
+display:inline-block;
+}
+
+.hero-heart{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+margin:0;
+line-height:1;
+font-size:0.78em;
+color:#ff6f9d;
+transform:translateY(-0.02em);
+text-shadow:0 0 14px rgba(255,96,146,0.52);
+animation:heroHeartBeat 2.4s ease-in-out infinite;
+}
+
+@keyframes heroHeartBeat{
+0%,
+100%{
+transform:translateY(-0.02em) scale(1);
+}
+30%{
+transform:translateY(-0.04em) scale(1.15);
+}
+60%{
+transform:translateY(-0.02em) scale(1.04);
+}
 }
 
 .hero-img{
@@ -2078,6 +2134,36 @@ margin:0 auto;
 height:420px;
 }
 
+/* RICH MOMENTS BACKDROP */
+.moments-section{
+position:relative;
+overflow:hidden;
+isolation:isolate;
+background:
+radial-gradient(120% 90% at 12% 8%,rgba(255,208,160,0.2),transparent 56%),
+radial-gradient(95% 80% at 88% 14%,rgba(255,120,160,0.18),transparent 62%),
+linear-gradient(138deg,#2a000f 0%,#53112a 45%,#7b2142 100%);
+}
+
+.moments-section::before{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0));
+z-index:0;
+}
+
+.moments-section > *{
+position:relative;
+z-index:1;
+}
+
+.moments-title{
+color:#ffe8da;
+text-shadow:0 8px 24px rgba(0,0,0,0.35);
+}
+
 @media (max-width:768px){
 .moments-section,
 .ceremony-section,
@@ -2301,6 +2387,94 @@ font-size:0.9rem;
 
 /* CEREMONY PATH EXPERIENCE */
 
+.ceremony-section{
+position:relative;
+overflow:hidden;
+isolation:isolate;
+background:
+radial-gradient(110% 75% at 14% 12%,rgba(255,212,169,0.22),transparent 58%),
+radial-gradient(90% 70% at 86% 15%,rgba(255,108,150,0.2),transparent 60%),
+linear-gradient(140deg,#360011 0%,#651d36 52%,#9a3858 100%);
+background-size:180% 180%;
+animation:ceremonyBackdropShift 16s ease-in-out infinite alternate;
+}
+
+.ceremony-section::before{
+content:"";
+position:absolute;
+inset:-12%;
+z-index:0;
+pointer-events:none;
+background:
+radial-gradient(circle at 22% 28%,rgba(255,196,142,0.24) 0 16%,transparent 44%),
+radial-gradient(circle at 82% 26%,rgba(255,121,170,0.2) 0 14%,transparent 42%),
+radial-gradient(circle at 54% 80%,rgba(255,87,133,0.16) 0 12%,transparent 40%);
+filter:blur(18px);
+animation:ceremonyGlowFloat 20s ease-in-out infinite;
+}
+
+.ceremony-section::after{
+content:"";
+position:absolute;
+inset:0;
+z-index:0;
+pointer-events:none;
+background:
+linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.01) 40%,rgba(255,255,255,0)),
+repeating-linear-gradient(120deg,rgba(255,255,255,0.04) 0 1px,transparent 1px 20px);
+opacity:0.4;
+animation:ceremonyTexturePulse 10s ease-in-out infinite;
+}
+
+.ceremony-section > *{
+position:relative;
+z-index:1;
+}
+
+@keyframes ceremonyBackdropShift{
+0%{
+background-position:0% 20%;
+}
+50%{
+background-position:52% 52%;
+}
+100%{
+background-position:100% 82%;
+}
+}
+
+@keyframes ceremonyGlowFloat{
+0%{
+transform:translate3d(0,0,0) scale(1);
+}
+50%{
+transform:translate3d(2.5%,1.5%,0) scale(1.05);
+}
+100%{
+transform:translate3d(-1.5%,2.5%,0) scale(0.98);
+}
+}
+
+@keyframes ceremonyTexturePulse{
+0%{
+opacity:0.28;
+}
+50%{
+opacity:0.46;
+}
+100%{
+opacity:0.32;
+}
+}
+
+@media (prefers-reduced-motion:reduce){
+.ceremony-section,
+.ceremony-section::before,
+.ceremony-section::after{
+animation:none;
+}
+}
+
 .ceremony-layout{
 position:relative;
 width:min(1180px,100%);
@@ -2518,5 +2692,147 @@ width:100%;
 
 .ceremony-points li{
 border-radius:14px;
+}
+}
+
+/* MICRO-INTERACTIONS */
+
+:root{
+--ux-ease:cubic-bezier(0.22,1,0.36,1);
+--ux-fast:180ms;
+--ux-normal:260ms;
+}
+
+:is(
+.invite-card,
+.flip-card,
+.count-card,
+.moments-swiper,
+.share-card,
+.location-info-card,
+.location-layout .map-card,
+.ceremony-card-main,
+.ceremony-side-card
+){
+transform:translateZ(0);
+will-change:transform;
+transition:
+transform var(--ux-normal) var(--ux-ease),
+box-shadow var(--ux-normal) var(--ux-ease),
+filter var(--ux-normal) var(--ux-ease),
+background-color var(--ux-fast) var(--ux-ease),
+border-color var(--ux-fast) var(--ux-ease);
+}
+
+:is(
+.invite-btn,
+.open-invite-btn,
+.calendar-btn,
+.map-action,
+.share-btn,
+.wa-btn,
+.map-btn
+){
+touch-action:manipulation;
+transition:
+transform var(--ux-fast) var(--ux-ease),
+box-shadow var(--ux-fast) var(--ux-ease),
+filter var(--ux-fast) var(--ux-ease),
+background-color var(--ux-fast) var(--ux-ease),
+color var(--ux-fast) var(--ux-ease);
+}
+
+.ceremony-points li,
+.meta-pill{
+transition:
+transform var(--ux-fast) var(--ux-ease),
+box-shadow var(--ux-fast) var(--ux-ease),
+background-color var(--ux-fast) var(--ux-ease);
+}
+
+@media (hover:hover){
+:is(
+.invite-card,
+.flip-card,
+.count-card,
+.moments-swiper,
+.share-card,
+.location-info-card,
+.location-layout .map-card,
+.ceremony-card-main,
+.ceremony-side-card
+):hover{
+transform:translateY(-4px) scale(1.006);
+filter:saturate(1.04);
+}
+
+:is(
+.invite-btn,
+.open-invite-btn,
+.calendar-btn,
+.map-action,
+.share-btn,
+.wa-btn,
+.map-btn
+):hover{
+transform:translateY(-2px) scale(1.012);
+filter:saturate(1.05);
+}
+
+.ceremony-points li:hover,
+.meta-pill:hover{
+transform:translateX(4px);
+}
+}
+
+:is(
+.invite-btn,
+.open-invite-btn,
+.calendar-btn,
+.map-action,
+.share-btn,
+.wa-btn,
+.map-btn
+):active{
+transform:translateY(0) scale(0.97);
+filter:saturate(0.98);
+}
+
+:is(
+.invite-btn,
+.open-invite-btn,
+.calendar-btn,
+.map-action,
+.share-btn,
+.wa-btn,
+.map-btn
+):focus-visible{
+outline:2px solid rgba(255,255,255,0.92);
+outline-offset:2px;
+}
+
+@media (prefers-reduced-motion:reduce){
+:is(
+.invite-card,
+.flip-card,
+.count-card,
+.moments-swiper,
+.share-card,
+.location-info-card,
+.location-layout .map-card,
+.ceremony-card-main,
+.ceremony-side-card,
+.invite-btn,
+.open-invite-btn,
+.calendar-btn,
+.map-action,
+.share-btn,
+.wa-btn,
+.map-btn,
+.ceremony-points li,
+.meta-pill
+){
+transition:none;
+transform:none;
 }
 }
