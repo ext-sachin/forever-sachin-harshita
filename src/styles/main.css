@@ -591,6 +591,7 @@ transform:scale(1.05);
 .countdown-section{
 
 position:relative;
+isolation:isolate;
 
 padding:140px 20px;
 
@@ -598,7 +599,7 @@ padding:140px 20px;
 background-image:url("/images/countdown-bg.jpg");
 
 background-size:cover;
-background-position:center;
+background-position:center 56%;
 
 /* gives cinematic feel */
 background-attachment:fixed;
@@ -635,6 +636,10 @@ z-index:1;
 position:relative;
 z-index:2;
 text-align:center;
+display:grid;
+gap:32px;
+max-width:min(100%,860px);
+margin:0 auto;
 }
 
 /* TITLE */
@@ -646,7 +651,7 @@ font-weight:700;
 
 color:white;
 
-margin-bottom:70px;
+margin-bottom:0;
 
 }
 
@@ -3769,4 +3774,68 @@ text-shadow:0 0 16px rgba(255,219,231,0.2);
 
 .invite-date{
 color:rgba(255,226,235,0.9);
+}
+
+/* COUNTDOWN MOBILE FIT */
+
+@media (max-width:768px){
+.countdown-section{
+padding:72px 16px;
+background-attachment:scroll;
+background-position:center 62%;
+}
+
+.count-overlay{
+background:linear-gradient(
+180deg,
+rgba(37,10,17,0.52),
+rgba(37,10,17,0.28)
+);
+}
+
+.count-content{
+gap:18px;
+max-width:380px;
+}
+
+.count-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px;
+width:min(100%,360px);
+margin:0 auto;
+}
+
+.flip-card{
+width:100%;
+min-height:120px;
+}
+
+.gold-ring{
+width:min(74vw,290px);
+height:min(74vw,290px);
+opacity:0.42;
+}
+}
+
+@media (max-width:480px){
+.countdown-section{
+padding:64px 14px;
+background-position:center 66%;
+}
+
+.count-content{
+max-width:340px;
+}
+
+.count-grid{
+gap:12px;
+width:min(100%,320px);
+}
+
+.gold-ring{
+width:min(78vw,250px);
+height:min(78vw,250px);
+opacity:0.36;
+}
 }

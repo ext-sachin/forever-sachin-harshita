@@ -64,23 +64,22 @@ export default function Countdown() {
 
     <section className="countdown-section">
       <div className="count-overlay"></div>
-<GoldenRing />
-<Sparkles />
-<PetalRain className="rose-petal-rain--countdown" />
-<div className="count-content"></div>
-      <h2 className="count-title">
-        Countdown to Our Wedding
-      </h2>
+      <GoldenRing />
+      <Sparkles />
+      <PetalRain className="rose-petal-rain--countdown" />
 
-      <div className="count-grid">
+      <div className="count-content">
+        <h2 className="count-title">
+          Countdown to Our Wedding
+        </h2>
 
-        <FlipCard value={timeLeft.days} label="Days" />
-        <FlipCard value={timeLeft.hours} label="Hours" />
-        <FlipCard value={timeLeft.minutes} label="Minutes" />
-        <FlipCard value={timeLeft.seconds} label="Seconds" />
-
+        <div className="count-grid">
+          <FlipCard value={timeLeft.days} label="Days" />
+          <FlipCard value={timeLeft.hours} label="Hours" />
+          <FlipCard value={timeLeft.minutes} label="Minutes" />
+          <FlipCard value={timeLeft.seconds} label="Seconds" />
+        </div>
       </div>
-
     </section>
 
   );
