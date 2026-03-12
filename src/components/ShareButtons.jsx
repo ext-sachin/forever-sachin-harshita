@@ -3,8 +3,6 @@ import { FaInstagram, FaLink, FaWhatsapp } from "react-icons/fa";
 
 export default function ShareButtons() {
   const [statusMessage, setStatusMessage] = useState("");
-  const inviteMessage =
-    "With joyful hearts, we invite you to celebrate our wedding on April 11-12, 2026. Your presence would mean so much to us.";
 
   const shareUrl = useMemo(() => {
     if (typeof window === "undefined") {
@@ -14,8 +12,9 @@ export default function ShareButtons() {
   }, []);
 
   const shareText = useMemo(
-    () => `${inviteMessage}\n\n${shareUrl}`,
-    [inviteMessage, shareUrl]
+    () =>
+      `You're invited to Sachin & Harshitha's wedding on April 11-12, 2026! ${shareUrl}`,
+    [shareUrl]
   );
 
   const copyToClipboard = async (text) => {
@@ -26,16 +25,10 @@ export default function ShareButtons() {
     return false;
   };
 
-  const handleWhatsAppShare = async () => {
-    const copied = await copyToClipboard(inviteMessage);
-
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareUrl)}`;
+  const handleWhatsAppShare = () => {
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    setStatusMessage(
-      copied
-        ? "WhatsApp opened with the link. The cover note is copied - paste it after the preview card loads."
-        : "WhatsApp opened with the link. Wait for the preview card, then add your message."
-    );
+    setStatusMessage("WhatsApp share opened.");
   };
 
   const handleInstagramShare = async () => {
@@ -43,7 +36,7 @@ export default function ShareButtons() {
       if (navigator.share) {
         await navigator.share({
           title: "Wedding Invitation",
-          text: inviteMessage,
+          text: "You're invited to our wedding celebration!",
           url: shareUrl
         });
         setStatusMessage("Share sheet opened. Choose Instagram.");
