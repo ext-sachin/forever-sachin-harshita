@@ -3160,3 +3160,613 @@ grid-template-columns:1fr;
 font-size:0.98rem;
 }
 }
+
+/* LUXURY / PREMIUM THEME */
+
+:root{
+--luxury-cream:#f4e8dc;
+--luxury-ivory:#fff9f2;
+--luxury-ivory-soft:rgba(255,249,242,0.7);
+--luxury-rose-gold:#c99383;
+--luxury-rose-gold-soft:rgba(201,147,131,0.2);
+--luxury-gold:#ddb694;
+--luxury-maroon:#64273b;
+--luxury-maroon-deep:#34111d;
+--luxury-ink:#402431;
+--luxury-border:rgba(201,147,131,0.34);
+--luxury-shadow:0 20px 46px rgba(52,17,29,0.14);
+--display-font:"Cormorant Garamond", Georgia, serif;
+--body-font:"Poppins", sans-serif;
+}
+
+body{
+position:relative;
+font-family:var(--body-font);
+color:var(--luxury-ink);
+background:
+radial-gradient(115% 115% at 10% 8%,rgba(255,251,245,0.98) 0%,rgba(244,232,220,0.95) 44%,rgba(230,212,202,0.88) 68%,rgba(126,62,82,0.38) 100%),
+linear-gradient(140deg,#fffbf6 0%,#f4e6da 48%,#efe1d5 100%);
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-6;
+pointer-events:none;
+opacity:0.42;
+background:
+repeating-linear-gradient(90deg,rgba(255,255,255,0.24) 0 1px,transparent 1px 24px),
+repeating-linear-gradient(0deg,rgba(101,42,58,0.05) 0 1px,transparent 1px 24px),
+radial-gradient(circle at 20% 20%,rgba(221,182,148,0.24) 0 1px,transparent 1.5px) 0 0 / 30px 30px;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+z-index:-5;
+pointer-events:none;
+background:
+radial-gradient(34% 26% at 12% 12%,rgba(221,182,148,0.18),transparent 72%),
+radial-gradient(34% 26% at 88% 16%,rgba(100,39,59,0.16),transparent 74%),
+radial-gradient(40% 30% at 50% 100%,rgba(201,147,131,0.12),transparent 74%);
+}
+
+.navbar{
+background:rgba(255,249,242,0.46);
+border-bottom:1px solid rgba(221,182,148,0.28);
+box-shadow:0 14px 30px rgba(52,17,29,0.08);
+}
+
+.nav-logo,
+.nav-initials,
+.hero h1,
+.count-title,
+.gallery-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title,
+.invite-title,
+.venue-name,
+.ceremony-side-title{
+font-family:var(--display-font);
+}
+
+.nav-logo{
+font-weight:700;
+letter-spacing:0.03em;
+color:var(--luxury-maroon);
+}
+
+.ring,
+.nav-heart,
+.hero-heart,
+.invite-title span,
+.heart-icon{
+color:var(--luxury-gold);
+text-shadow:0 0 16px rgba(221,182,148,0.28);
+}
+
+.hero{
+color:var(--luxury-ivory);
+}
+
+.hero-content{
+position:relative;
+padding:30px 36px;
+border:1px solid rgba(255,248,240,0.26);
+border-radius:34px;
+background:
+linear-gradient(180deg,rgba(67,18,33,0.4),rgba(67,18,33,0.2)),
+radial-gradient(circle at top,rgba(255,250,244,0.12),transparent 55%);
+backdrop-filter:blur(14px);
+box-shadow:
+0 28px 60px rgba(0,0,0,0.18),
+inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.hero-content::before,
+.hero-content::after,
+.share-card::before,
+.share-card::after,
+.location-info-card::before,
+.location-info-card::after,
+.ceremony-card-main::before,
+.ceremony-card-main::after,
+.ceremony-side-card::before,
+.ceremony-side-card::after{
+content:"";
+position:absolute;
+width:84px;
+height:84px;
+pointer-events:none;
+opacity:0.82;
+background:
+radial-gradient(circle at 16px 16px,rgba(255,248,240,0.94) 0 4px,transparent 4.5px),
+radial-gradient(circle at 31px 13px,rgba(221,182,148,0.96) 0 5px,transparent 5.5px),
+radial-gradient(circle at 17px 33px,rgba(201,147,131,0.88) 0 6px,transparent 6.5px),
+radial-gradient(circle at 38px 31px,rgba(255,248,240,0.86) 0 4px,transparent 4.5px),
+linear-gradient(90deg,transparent 0 10px,rgba(221,182,148,0.7) 10px 12px,transparent 12px 100%),
+linear-gradient(180deg,transparent 0 10px,rgba(221,182,148,0.7) 10px 12px,transparent 12px 100%);
+}
+
+.hero-content::before,
+.share-card::before,
+.location-info-card::before,
+.ceremony-card-main::before,
+.ceremony-side-card::before{
+top:14px;
+left:14px;
+}
+
+.hero-content::after,
+.share-card::after,
+.location-info-card::after,
+.ceremony-card-main::after,
+.ceremony-side-card::after{
+right:14px;
+bottom:14px;
+transform:rotate(180deg);
+}
+
+.hero h1{
+font-size:clamp(3rem,7vw,4.9rem);
+font-weight:700;
+letter-spacing:0.015em;
+text-shadow:0 12px 34px rgba(0,0,0,0.28);
+}
+
+.hero p{
+margin:14px auto 0;
+max-width:28ch;
+color:rgba(255,248,240,0.94);
+text-shadow:0 8px 20px rgba(0,0,0,0.22);
+}
+
+.count-overlay{
+background:linear-gradient(180deg,rgba(52,17,29,0.7),rgba(90,35,52,0.44));
+}
+
+.count-title,
+.moments-title{
+color:var(--luxury-ivory);
+text-shadow:0 12px 26px rgba(28,8,15,0.34);
+}
+
+.flip-card{
+border:1px solid rgba(255,248,240,0.18);
+background:
+linear-gradient(160deg,rgba(255,250,244,0.2),rgba(201,147,131,0.14)),
+rgba(255,255,255,0.08);
+box-shadow:
+0 22px 56px rgba(36,9,17,0.3),
+inset 0 1px 0 rgba(255,255,255,0.18);
+}
+
+.flip-number,
+.flip-card p{
+color:var(--luxury-ivory);
+}
+
+.moments-section{
+background:
+radial-gradient(120% 90% at 12% 8%,rgba(221,182,148,0.18),transparent 56%),
+radial-gradient(95% 80% at 88% 14%,rgba(201,147,131,0.16),transparent 62%),
+linear-gradient(138deg,#2f0b16 0%,#4b1726 45%,#6f2840 100%);
+}
+
+.ceremony-section{
+background:
+radial-gradient(110% 75% at 14% 12%,rgba(221,182,148,0.18),transparent 58%),
+radial-gradient(90% 70% at 86% 15%,rgba(201,147,131,0.18),transparent 60%),
+linear-gradient(140deg,#321018 0%,#582033 52%,#7b3047 100%);
+}
+
+.location-section,
+.share-section{
+position:relative;
+overflow:hidden;
+background:
+linear-gradient(180deg,rgba(255,251,246,0.72),rgba(255,247,240,0.38)),
+radial-gradient(120% 90% at 10% 0%,rgba(221,182,148,0.18),transparent 58%);
+}
+
+.location-section::before,
+.share-section::before{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+opacity:0.3;
+background:
+repeating-linear-gradient(135deg,rgba(255,255,255,0.18) 0 16px,rgba(201,147,131,0.06) 16px 32px);
+}
+
+.location-section > *,
+.share-section > *{
+position:relative;
+z-index:1;
+}
+
+:is(
+.share-card,
+.location-info-card,
+.ceremony-card-main,
+.ceremony-side-card,
+.location-layout .map-card
+){
+position:relative;
+overflow:hidden;
+border:1px solid var(--luxury-border);
+background:
+linear-gradient(145deg,rgba(255,250,243,0.82),rgba(250,237,229,0.48)),
+repeating-linear-gradient(135deg,rgba(255,255,255,0.1) 0 14px,rgba(201,147,131,0.06) 14px 28px);
+box-shadow:var(--luxury-shadow);
+}
+
+.location-layout .map-card{
+background:
+linear-gradient(145deg,rgba(255,250,243,0.88),rgba(250,237,229,0.58));
+}
+
+.location-kicker,
+.invite-small{
+color:var(--luxury-maroon);
+letter-spacing:0.24em;
+text-transform:uppercase;
+}
+
+.location-title,
+.share-title,
+.ceremony-title{
+color:var(--luxury-maroon);
+font-weight:700;
+letter-spacing:0.02em;
+}
+
+.location-subtitle,
+.share-subtitle,
+.venue-address,
+.ceremony-text,
+.share-status,
+.location-status{
+color:rgba(64,36,49,0.82);
+}
+
+.meta-pill,
+.ceremony-points li{
+border:1px solid rgba(201,147,131,0.24);
+background:rgba(255,249,242,0.74);
+box-shadow:0 10px 24px rgba(64,36,49,0.08);
+color:var(--luxury-maroon);
+}
+
+.map-action-primary,
+.calendar-btn,
+.invite-btn,
+.open-invite-btn{
+border:1px solid rgba(255,245,236,0.28);
+background:linear-gradient(135deg,#6a2940 0%,#a3655a 58%,#ddb694 100%);
+color:var(--luxury-ivory);
+box-shadow:0 16px 34px rgba(52,17,29,0.24);
+}
+
+.map-action-tertiary{
+border:1px solid rgba(201,147,131,0.24);
+background:linear-gradient(135deg,#fffaf5 0%,#f6e9df 100%);
+color:var(--luxury-maroon);
+box-shadow:0 12px 24px rgba(64,36,49,0.12);
+}
+
+.open-invite-btn::before{
+background:linear-gradient(
+90deg,
+rgba(255,255,255,0),
+rgba(255,250,244,0.88),
+rgba(255,255,255,0)
+);
+}
+
+.open-invite-btn::after{
+color:var(--luxury-ivory);
+}
+
+.location-layout .map-card iframe{
+filter:saturate(0.94) contrast(1.02) sepia(0.03);
+}
+
+@media (max-width:768px){
+.hero-content{
+padding:24px 24px 26px;
+border-radius:28px;
+}
+
+.hero-content::before,
+.hero-content::after,
+.share-card::before,
+.share-card::after,
+.location-info-card::before,
+.location-info-card::after,
+.ceremony-card-main::before,
+.ceremony-card-main::after,
+.ceremony-side-card::before,
+.ceremony-side-card::after{
+width:66px;
+height:66px;
+opacity:0.72;
+}
+}
+
+/* ROYAL TRADITIONAL PASS */
+
+:root{
+--royal-kumkum:#7a1f35;
+--royal-sandal:#e2be8d;
+--royal-leaf:#a86f59;
+}
+
+.navbar{
+position:fixed;
+}
+
+.navbar::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:2px;
+background:linear-gradient(90deg,transparent,rgba(226,190,141,0.86),transparent);
+}
+
+.nav-logo{
+text-shadow:0 6px 18px rgba(122,31,53,0.12);
+}
+
+.hero{
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+background:
+radial-gradient(35% 24% at 50% 18%,rgba(255,248,240,0.14),transparent 72%),
+linear-gradient(180deg,rgba(29,7,13,0.18),rgba(29,7,13,0.28));
+}
+
+.hero-content{
+box-shadow:
+0 28px 60px rgba(0,0,0,0.18),
+0 0 0 1px rgba(255,243,229,0.08),
+inset 0 0 0 1px rgba(226,190,141,0.16),
+inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.hero-couple-name{
+letter-spacing:0.02em;
+}
+
+.invite-card{
+filter:drop-shadow(0 20px 38px rgba(44,12,20,0.26));
+}
+
+.invite-heart-shape{
+background:
+linear-gradient(135deg,rgba(255,249,242,0.98) 0%,rgba(248,229,217,0.98) 52%,rgba(229,194,171,0.98) 100%);
+box-shadow:
+0 24px 48px rgba(40,10,18,0.24),
+inset 0 0 0 2px rgba(226,190,141,0.34),
+inset 0 0 22px rgba(122,31,53,0.08);
+}
+
+.invite-card-content{
+text-shadow:0 4px 18px rgba(52,17,29,0.12);
+}
+
+.invite-date{
+letter-spacing:0.08em;
+text-transform:uppercase;
+color:rgba(90,35,52,0.74);
+}
+
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+){
+position:relative;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:16px;
+padding:0 18px;
+margin-left:auto;
+margin-right:auto;
+}
+
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+)::before,
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+)::after{
+content:"";
+flex:0 0 62px;
+height:14px;
+opacity:0.88;
+background:
+radial-gradient(circle at 50% 50%,rgba(226,190,141,0.96) 0 2.5px,transparent 3px),
+radial-gradient(circle at 14px 50%,rgba(255,248,240,0.94) 0 2px,transparent 2.5px),
+radial-gradient(circle at 48px 50%,rgba(255,248,240,0.94) 0 2px,transparent 2.5px),
+linear-gradient(90deg,transparent 0 8px,rgba(226,190,141,0.7) 8px 54px,transparent 54px);
+}
+
+.count-title::before,
+.moments-title::before,
+.location-title::before,
+.share-title::before,
+.ceremony-title::before{
+transform:scaleX(-1);
+}
+
+.countdown-section::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:100%;
+height:120px;
+pointer-events:none;
+z-index:1;
+opacity:0.2;
+background:
+radial-gradient(circle at 4% 28%,rgba(226,190,141,0.9) 0 4px,transparent 5px),
+radial-gradient(circle at 10% 44%,rgba(255,248,240,0.95) 0 3px,transparent 4px),
+radial-gradient(circle at 16% 24%,rgba(201,147,131,0.85) 0 4px,transparent 5px),
+radial-gradient(circle at 22% 42%,rgba(226,190,141,0.9) 0 3px,transparent 4px),
+linear-gradient(180deg,rgba(255,248,240,0.12),transparent 88%);
+background-size:160px 100%,160px 100%,160px 100%,160px 100%,100% 100%;
+}
+
+.count-content,
+.count-title,
+.count-grid{
+position:relative;
+z-index:2;
+}
+
+:is(
+.share-card,
+.location-info-card,
+.ceremony-card-main,
+.ceremony-side-card,
+.location-layout .map-card
+){
+box-shadow:
+0 20px 46px rgba(52,17,29,0.14),
+0 0 0 1px rgba(255,252,247,0.5),
+inset 0 0 0 1px rgba(226,190,141,0.16);
+}
+
+.share-card,
+.location-info-card,
+.ceremony-card-main{
+background:
+linear-gradient(145deg,rgba(255,250,243,0.88),rgba(250,237,229,0.54)),
+repeating-linear-gradient(135deg,rgba(255,255,255,0.14) 0 14px,rgba(201,147,131,0.05) 14px 28px),
+radial-gradient(circle at top,rgba(226,190,141,0.1),transparent 54%);
+}
+
+.ceremony-side-title,
+.location-kicker,
+.invite-small{
+font-weight:700;
+letter-spacing:0.22em;
+}
+
+.venue-name,
+.share-title,
+.location-title,
+.ceremony-title{
+text-shadow:0 3px 10px rgba(122,31,53,0.08);
+}
+
+.meta-pill,
+.ceremony-points li{
+border-color:rgba(226,190,141,0.24);
+}
+
+.map-action-primary,
+.calendar-btn,
+.invite-btn,
+.open-invite-btn{
+background:linear-gradient(135deg,#5a1830 0%,#8d3a4f 46%,#b97d64 74%,#e2be8d 100%);
+box-shadow:
+0 16px 34px rgba(52,17,29,0.24),
+inset 0 1px 0 rgba(255,248,240,0.2);
+}
+
+.map-action-tertiary{
+background:linear-gradient(135deg,#fffaf5 0%,#f2e1d4 100%);
+}
+
+@media (max-width:768px){
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+){
+gap:10px;
+padding:0 8px;
+}
+
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+)::before,
+:is(
+.count-title,
+.moments-title,
+.location-title,
+.share-title,
+.ceremony-title
+)::after{
+flex-basis:34px;
+height:12px;
+}
+
+.invite-date{
+letter-spacing:0.05em;
+}
+}
+
+.invite-heart-shape{
+background:
+linear-gradient(155deg,#ef6b90 0%,#d93669 34%,#a01744 70%,#650820 100%);
+box-shadow:
+0 26px 58px rgba(0,0,0,0.38),
+0 0 45px rgba(217,54,105,0.4),
+inset 0 14px 22px rgba(255,210,223,0.2),
+inset 0 -12px 20px rgba(74,0,20,0.28);
+}
+
+.invite-card-content{
+text-shadow:0 8px 22px rgba(41,5,16,0.35);
+}
+
+.invite-small{
+color:rgba(255,239,244,0.88);
+}
+
+.invite-title{
+color:#fff8fb;
+}
+
+.invite-title span{
+color:#ffdbe7;
+text-shadow:0 0 16px rgba(255,219,231,0.2);
+}
+
+.invite-date{
+color:rgba(255,226,235,0.9);
+}
