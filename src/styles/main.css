@@ -3932,3 +3932,289 @@ padding:13px 14px;
 border-radius:18px;
 }
 }
+
+/* CEREMONY SECTION REFINEMENT */
+
+.ceremony-layout-compact{
+width:min(1040px,100%);
+grid-template-columns:minmax(0,1.18fr) minmax(280px,0.82fr);
+grid-template-areas:"main details";
+gap:28px;
+padding:0;
+align-items:stretch;
+}
+
+.ceremony-layout-compact .ceremony-flow-path{
+display:none;
+}
+
+.ceremony-card-main-compact{
+display:grid;
+gap:20px;
+align-content:center;
+padding:42px 38px;
+text-align:center;
+}
+
+.ceremony-kicker{
+margin:0;
+font-size:0.82rem;
+font-weight:700;
+letter-spacing:0.24em;
+text-transform:uppercase;
+color:#8a5567;
+}
+
+.ceremony-card-main-compact .ceremony-title{
+margin-bottom:0;
+}
+
+.ceremony-card-main-compact .ceremony-text{
+max-width:25ch;
+margin:0 auto;
+font-size:1.18rem;
+line-height:1.75;
+}
+
+.ceremony-info-card{
+grid-area:details;
+display:grid;
+gap:18px;
+align-content:start;
+padding:28px 22px;
+}
+
+.ceremony-detail-list{
+margin:0;
+padding:0;
+list-style:none;
+display:grid;
+gap:14px;
+}
+
+.ceremony-detail-item{
+display:grid;
+grid-template-columns:auto minmax(0,1fr);
+gap:14px;
+align-items:center;
+padding:16px 18px;
+border-radius:22px;
+border:1px solid rgba(226,190,141,0.2);
+background:linear-gradient(135deg,rgba(255,252,248,0.96),rgba(245,232,225,0.82));
+box-shadow:
+0 12px 24px rgba(64,36,49,0.08),
+inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.ceremony-detail-copy{
+display:grid;
+gap:5px;
+min-width:0;
+}
+
+.ceremony-detail-label{
+font-size:0.74rem;
+font-weight:700;
+letter-spacing:0.16em;
+text-transform:uppercase;
+color:#9b6b7c;
+}
+
+.ceremony-detail-value{
+font-size:1.02rem;
+line-height:1.45;
+color:#5a2436;
+}
+
+.ceremony-detail-note{
+margin:0;
+padding:0 6px;
+font-size:0.98rem;
+line-height:1.7;
+text-align:center;
+color:rgba(64,36,49,0.78);
+}
+
+@media (max-width:1100px){
+.ceremony-layout-compact{
+grid-template-columns:1fr;
+grid-template-areas:
+"main"
+"details";
+gap:18px;
+}
+
+.ceremony-card-main-compact,
+.ceremony-info-card{
+padding:28px 22px;
+}
+}
+
+@media (max-width:768px){
+.ceremony-card-main-compact{
+gap:18px;
+padding:24px 20px;
+}
+
+.ceremony-kicker{
+font-size:0.74rem;
+letter-spacing:0.18em;
+}
+
+.ceremony-card-main-compact .ceremony-text{
+font-size:1.04rem;
+line-height:1.7;
+}
+
+.ceremony-info-card{
+padding:22px 18px;
+gap:16px;
+}
+
+.ceremony-detail-item{
+padding:14px 14px;
+gap:12px;
+border-radius:18px;
+}
+
+.ceremony-detail-value{
+font-size:0.98rem;
+}
+
+.ceremony-detail-note{
+padding:0;
+font-size:0.94rem;
+}
+}
+
+/* MUSIC PLAYER */
+
+.music-player{
+position:fixed;
+right:24px;
+bottom:24px;
+z-index:130;
+display:flex;
+align-items:center;
+gap:14px;
+width:min(420px,calc(100vw - 32px));
+padding:14px 16px;
+border-radius:24px;
+border:1px solid rgba(255,247,236,0.56);
+background:
+linear-gradient(145deg,rgba(255,250,244,0.88),rgba(243,223,214,0.64)),
+repeating-linear-gradient(135deg,rgba(255,255,255,0.12) 0 14px,rgba(201,147,131,0.05) 14px 28px),
+radial-gradient(circle at top,rgba(226,190,141,0.14),transparent 58%);
+backdrop-filter:blur(16px);
+box-shadow:
+0 18px 36px rgba(52,17,29,0.16),
+0 0 0 1px rgba(255,252,247,0.5),
+inset 0 0 0 1px rgba(226,190,141,0.16);
+}
+
+.music-player-copy{
+flex:1;
+min-width:0;
+display:grid;
+gap:6px;
+}
+
+.music-player-kicker{
+display:inline-flex;
+align-items:center;
+gap:8px;
+margin:0;
+font-size:0.8rem;
+font-weight:700;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:#6d3043;
+}
+
+.music-player-status{
+margin:0;
+font-size:0.96rem;
+line-height:1.55;
+color:rgba(64,36,49,0.82);
+}
+
+.music-player-actions{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.music-toggle{
+width:48px;
+height:48px;
+display:grid;
+place-items:center;
+border:none;
+border-radius:999px;
+cursor:pointer;
+font-size:1rem;
+color:#fff9f2;
+background:linear-gradient(135deg,#5a1830 0%,#8d3a4f 46%,#b97d64 74%,#e2be8d 100%);
+box-shadow:
+0 16px 28px rgba(52,17,29,0.2),
+inset 0 1px 0 rgba(255,248,240,0.2);
+transition:transform 0.24s ease, box-shadow 0.24s ease, opacity 0.24s ease;
+}
+
+.music-toggle:hover:not(:disabled){
+transform:translateY(-2px);
+box-shadow:
+0 20px 34px rgba(52,17,29,0.24),
+inset 0 1px 0 rgba(255,248,240,0.22);
+}
+
+.music-toggle:disabled{
+cursor:not-allowed;
+opacity:0.56;
+box-shadow:none;
+}
+
+.music-toggle-secondary{
+background:linear-gradient(135deg,#fffaf5 0%,#f2e1d4 100%);
+color:#6d3043;
+box-shadow:0 12px 24px rgba(64,36,49,0.12);
+}
+
+.music-player-unavailable .music-player-status{
+color:#7a1f35;
+}
+
+@media (max-width:768px){
+.music-player{
+left:16px;
+right:16px;
+bottom:16px;
+width:auto;
+padding:14px;
+border-radius:22px;
+}
+
+.music-player-kicker{
+font-size:0.74rem;
+letter-spacing:0.16em;
+}
+
+.music-player-status{
+font-size:0.92rem;
+}
+
+.music-toggle{
+width:44px;
+height:44px;
+}
+}
+
+@media (max-width:520px){
+.music-player{
+align-items:flex-start;
+}
+
+.music-player-actions{
+padding-top:2px;
+}
+}

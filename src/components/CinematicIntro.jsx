@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import PetalRain from "./PetalRain";
 
-export default function CinematicIntro({ setOpen }) {
+export default function CinematicIntro({ onOpenInvitation }) {
   const [showHeart, setShowHeart] = useState(false);
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function CinematicIntro({ setOpen }) {
 
               <button
                 className="invite-btn open-invite-btn"
-                onClick={() => setOpen(true)}
+                onClick={onOpenInvitation}
               >
                 Open Invitation
               </button>

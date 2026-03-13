@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -14,14 +14,21 @@ import Petals from "./components/Petals";
 import WeddingDetails from "./components/WeddingDetails";
 import MomentsSlider from "./components/MomentsSlider";
 import CinematicIntro from "./components/CinematicIntro";
+import MusicPlayer from "./components/MusicPlayer";
 import WeddingLoader from "./components/WeddingLoader";
 import ShareButtons from "./components/ShareButtons";
 
-function App() {
+const MUSIC_SOURCE = `${import.meta.env.BASE_URL}music/wedding-theme.mp3`;
+const MUSIC_VOLUME = 0.34;
 
+function App() {
+  const audioRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [inviteOpen, setInviteOpen] = useState(false);
   const [showDeferredSections, setShowDeferredSections] = useState(false);
+  const [musicAvailable, setMusicAvailable] = useState(true);
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  const [musicMuted, setMusicMuted] = useState(false);
 
   useEffect(() => {
     let minimumDelayDone = false;
@@ -86,44 +93,134 @@ function App() {
     return () => window.clearTimeout(deferredTimer);
   }, [inviteOpen]);
 
-  if (isLoading) {
-    return <WeddingLoader />;
-  }
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (!audio) {
+      return;
+    }
+
+    audio.volume = MUSIC_VOLUME;
+    audio.muted = false;
+  }, []);
+
+  const playMusic = async () => {
+    const audio = audioRef.current;
+
+    if (!audio || !musicAvailable) {
+      return false;
+    }
+
+    try {
+      await audio.play();
+      setMusicPlaying(true);
+      return true;
+    } catch {
+      if (audio.error) {
+        setMusicAvailable(false);
+      }
+      setMusicPlaying(false);
+      return false;
+    }
+  };
+
+  const handleOpenInvitation = () => {
+    setInviteOpen(true);
+    void playMusic();
+  };
+
+  const handleTogglePlayback = async () => {
+    const audio = audioRef.current;
+
+    if (!audio || !musicAvailable) {
+      return;
+    }
+
+    if (audio.paused) {
+      await playMusic();
+      return;
+    }
+
+    audio.pause();
+    setMusicPlaying(false);
+  };
+
+  const handleToggleMute = () => {
+    const audio = audioRef.current;
+
+    if (!audio || !musicAvailable) {
+      return;
+    }
+
+    const nextMuted = !audio.muted;
+    audio.muted = nextMuted;
+    setMusicMuted(nextMuted);
+  };
 
   return (
     <>
-      {/* Cinematic Intro */}
-      {!inviteOpen && (
-        <CinematicIntro setOpen={setInviteOpen} />
-      )}
+      <audio
+        ref={audioRef}
+        src={MUSIC_SOURCE}
+        loop
+        playsInline
+        preload="auto"
+        onCanPlay={() => setMusicAvailable(true)}
+        onPlay={() => setMusicPlaying(true)}
+        onPause={() => setMusicPlaying(false)}
+        onVolumeChange={() => setMusicMuted(Boolean(audioRef.current?.muted))}
+        onError={() => {
+          setMusicAvailable(false);
+          setMusicPlaying(false);
+          setMusicMuted(false);
+        }}
+      />
 
-      {/* Main Website */}
-      {inviteOpen && (
+      {isLoading ? (
+        <WeddingLoader />
+      ) : (
         <>
-          {/* Animated Background */}
-          <Background3D />
+          {/* Cinematic Intro */}
+          {!inviteOpen && (
+            <CinematicIntro onOpenInvitation={handleOpenInvitation} />
+          )}
 
-          {/* Floating animations */}
-          <FloatingHearts />
-          <Petals />
-
-          {/* Navigation */}
-          <Navbar />
-
-          {/* Sections */}
-          <Hero />
-
-          <Countdown />
-
-          {showDeferredSections && (
+          {/* Main Website */}
+          {inviteOpen && (
             <>
-              <MomentsSlider />
+              {/* Animated Background */}
+              <Background3D />
 
-              <WeddingDetails />
+              {/* Floating animations */}
+              <FloatingHearts />
+              <Petals />
 
-              <Map />
+              {/* Navigation */}
+              <Navbar />
+              <MusicPlayer
+                isAvailable={musicAvailable}
+                isMuted={musicMuted}
+                isPlaying={musicPlaying}
+                onToggleMute={handleToggleMute}
+                onTogglePlayback={handleTogglePlayback}
+              />
 
-              <ShareButtons />
+              {/* Sections */}
+              <Hero />
+
+              <Countdown />
+
+              {showDeferredSections && (
+                <>
+                  <MomentsSlider />
+
+                  <WeddingDetails />
+
+                  <Map />
+
+                  <ShareButtons />
+                </>
+              )}
             </>
           )}
         </>
